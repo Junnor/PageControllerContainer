@@ -18,7 +18,7 @@ class PageContainerController: UIViewController {
     // MARK: - Public
     var allowedRecursive = true
     var useTimerAnimation = true
-    var hidePageController = true
+    var hidePageController = false
 
     var imagesName: [String] = []
     var pagesTitle: [String] = []

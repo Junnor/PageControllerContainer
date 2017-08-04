@@ -18,10 +18,10 @@ class PageViewController: UIViewController {
     weak var delegate: PageViewControllerDelegate?
 
     var allowedRecursive = true
-    var hidePageController = false
     var useTimerAnimation = true
-    
-    func setData(_ data: (imagesName: [String], pagesTitle: [String])) {  
+    var hidePageController = false
+
+    func setData(_ data: (imagesName: [String], pagesTitle: [String])) {
         
         self.imagesName = data.imagesName
         self.pagesTitle = data.pagesTitle
