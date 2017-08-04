@@ -74,6 +74,8 @@ class PageViewController: UIViewController {
     // MARK: Helper
     
     private func fireTimer() {
+        timer?.invalidate()   // 解决 push 的时候可能出现滚动加快问题
+
         timer = Timer.scheduledTimer(timeInterval: 3.0,
                                           target: self,
                                           selector: #selector(scrollToNextController),
@@ -83,7 +85,7 @@ class PageViewController: UIViewController {
     }
     
     private func invalidateTimer() {
-        timer.invalidate()
+        timer?.invalidate()
     }
     
     private func setPageViewController() {
