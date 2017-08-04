@@ -27,16 +27,7 @@ class PageContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("page title: \(String(describing: pageTitle))")
-        print("page index: \(pageIndex)")
-        print("page image: \(String(describing: imageFile))")
-
-        
-        print("PageContentViewController viewDidLoad index: \(pageIndex)\n")
-        
-
-        
+                
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
         view.addGestureRecognizer(tap)
     }
@@ -64,6 +55,7 @@ class PageContentViewController: UIViewController {
         view.addSubview(imageView)
         if imageFile != nil {
             imageView.image = UIImage(named: imageFile!)
+            imageView.contentMode = .center
         }
     }
     

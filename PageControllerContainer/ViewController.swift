@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("ViewController viewDidLoad\n")
         automaticallyAdjustsScrollViewInsets = false
         
         containerController = PageContainerController()
@@ -24,16 +23,21 @@ class ViewController: UIViewController {
         
         containerController.delegate = self
         
-//        containerController.useTimerAnimation = false
+        containerController.useTimerAnimation = true
+        containerController.hidePageController = true
         
         addChildViewController(containerController)
-        let bounds = UIScreen.main.bounds
-        containerController.view.frame = CGRect(x: 0, y: 100, width: bounds.width, height: 300)
+        var frame = UIScreen.main.bounds
+        frame.origin.y = 64
+        frame.size.height = 300
+        containerController.view.frame = frame
         view.addSubview(containerController.view)
         containerController.didMove(toParentViewController: self)
     }
     
 }
+
+// MARK: - pageContainer delegate
 
 extension ViewController: PageContainerControllerDelegate {
     

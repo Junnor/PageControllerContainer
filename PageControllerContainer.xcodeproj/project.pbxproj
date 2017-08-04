@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6715B5D51F3409FC0097FCC0 /* PageContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715B5D21F3409FC0097FCC0 /* PageContainerController.swift */; };
+		6715B5D61F3409FC0097FCC0 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715B5D31F3409FC0097FCC0 /* PageContentViewController.swift */; };
+		6715B5D71F3409FC0097FCC0 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6715B5D41F3409FC0097FCC0 /* PageViewController.swift */; };
 		67AA807D1F3322B1001C3622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA807C1F3322B1001C3622 /* AppDelegate.swift */; };
 		67AA807F1F3322B1001C3622 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA807E1F3322B1001C3622 /* ViewController.swift */; };
 		67AA80821F3322B1001C3622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67AA80801F3322B1001C3622 /* Main.storyboard */; };
 		67AA80871F3322B1001C3622 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67AA80851F3322B1001C3622 /* LaunchScreen.storyboard */; };
-		67AA808F1F3322CD001C3622 /* PageContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA808E1F3322CD001C3622 /* PageContainerController.swift */; };
-		67AA80911F33239D001C3622 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA80901F33239D001C3622 /* PageViewController.swift */; };
-		67AA80931F3323A5001C3622 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA80921F3323A5001C3622 /* PageContentViewController.swift */; };
 		67AA80951F33364F001C3622 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AA80941F33364F001C3622 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6715B5D21F3409FC0097FCC0 /* PageContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContainerController.swift; sourceTree = "<group>"; };
+		6715B5D31F3409FC0097FCC0 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		6715B5D41F3409FC0097FCC0 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		67AA80791F3322B1001C3622 /* PageControllerContainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageControllerContainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AA807C1F3322B1001C3622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67AA807E1F3322B1001C3622 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		67AA80811F3322B1001C3622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		67AA80861F3322B1001C3622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67AA80881F3322B1001C3622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		67AA808E1F3322CD001C3622 /* PageContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContainerController.swift; sourceTree = "<group>"; };
-		67AA80901F33239D001C3622 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		67AA80921F3323A5001C3622 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		67AA80941F33364F001C3622 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6715B5D11F3409FC0097FCC0 /* PageContainer */ = {
+			isa = PBXGroup;
+			children = (
+				6715B5D21F3409FC0097FCC0 /* PageContainerController.swift */,
+				6715B5D41F3409FC0097FCC0 /* PageViewController.swift */,
+				6715B5D31F3409FC0097FCC0 /* PageContentViewController.swift */,
+			);
+			path = PageContainer;
+			sourceTree = "<group>";
+		};
 		67AA80701F3322B1001C3622 = {
 			isa = PBXGroup;
 			children = (
@@ -62,9 +72,7 @@
 			children = (
 				67AA807C1F3322B1001C3622 /* AppDelegate.swift */,
 				67AA807E1F3322B1001C3622 /* ViewController.swift */,
-				67AA808E1F3322CD001C3622 /* PageContainerController.swift */,
-				67AA80901F33239D001C3622 /* PageViewController.swift */,
-				67AA80921F3323A5001C3622 /* PageContentViewController.swift */,
+				6715B5D11F3409FC0097FCC0 /* PageContainer */,
 				67AA80941F33364F001C3622 /* Assets.xcassets */,
 				67AA80801F3322B1001C3622 /* Main.storyboard */,
 				67AA80851F3322B1001C3622 /* LaunchScreen.storyboard */,
@@ -146,11 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67AA808F1F3322CD001C3622 /* PageContainerController.swift in Sources */,
+				6715B5D51F3409FC0097FCC0 /* PageContainerController.swift in Sources */,
+				6715B5D71F3409FC0097FCC0 /* PageViewController.swift in Sources */,
+				6715B5D61F3409FC0097FCC0 /* PageContentViewController.swift in Sources */,
 				67AA807F1F3322B1001C3622 /* ViewController.swift in Sources */,
-				67AA80931F3323A5001C3622 /* PageContentViewController.swift in Sources */,
 				67AA807D1F3322B1001C3622 /* AppDelegate.swift in Sources */,
-				67AA80911F33239D001C3622 /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +322,7 @@
 				67AA808D1F3322B1001C3622 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

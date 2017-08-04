@@ -16,11 +16,10 @@ class PageContainerController: UIViewController {
     
     
     // MARK: - Public
-    
     var allowedRecursive = true
-    var hidePageController = true
     var useTimerAnimation = true
-    
+    var hidePageController = true
+
     var imagesName: [String] = []
     var pagesTitle: [String] = []
     
@@ -35,8 +34,6 @@ class PageContainerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("PageContainerController viewDidLoad\n")
-
         pageViewController = PageViewController()
         pageViewController.delegate = self
         
@@ -53,6 +50,7 @@ class PageContainerController: UIViewController {
         
 }
 
+// MARK: - pageView delegate
 
 extension PageContainerController: PageViewControllerDelegate {
     func pageViewController(_ pageViewController: PageViewController, didSelectedAt page: Int) {

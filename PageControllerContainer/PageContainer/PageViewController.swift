@@ -18,7 +18,7 @@ class PageViewController: UIViewController {
     weak var delegate: PageViewControllerDelegate?
 
     var allowedRecursive = true
-    var hidePageController = true
+    var hidePageController = false
     var useTimerAnimation = true
     
     func setData(_ data: (imagesName: [String], pagesTitle: [String])) {  
@@ -28,6 +28,7 @@ class PageViewController: UIViewController {
     }
     
     // MARK: Private
+    
     fileprivate var imagesName: [String] = []
     fileprivate var pagesTitle: [String] = []
     
@@ -38,48 +39,52 @@ class PageViewController: UIViewController {
     private var lastPageIndex = 0
     fileprivate var numberOfPage = 0
         
-    // MARK: - View controller lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        print("PageViewController viewDidLoad\n")
-        
-        
-        pageControllerHeight = 50
-        lastPageIndex = 0
-    }
-    
-    
+    // MARK: - View controller lifecycle    
     private var addedSubView = false
+    private var timer: Timer!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if !addedSubView {
             
-            print("PageViewController viewDidAppear\n")
-
             addedSubView = true
-            
             
             setPageViewController()
             setPageController()
-            
-            if useTimerAnimation {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
-                    Timer.scheduledTimer(timeInterval: 3.0,
-                                         target: self,
-                                         selector: #selector(self.scrollToNextController),
-                                         userInfo: nil,
-                                         repeats: true)
-                })
-            }
         }
         
+        
+        if useTimerAnimation {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                self.fireTimer()
+            })
+        }
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        if useTimerAnimation {
+            self.invalidateTimer()
+        }
     }
 
     
     // MARK: Helper
+    
+    private func fireTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 3.0,
+                                          target: self,
+                                          selector: #selector(scrollToNextController),
+                                          userInfo: nil,
+                                          repeats: true)
+        timer.fire()
+    }
+    
+    private func invalidateTimer() {
+        timer.invalidate()
+    }
     
     private func setPageViewController() {
         
@@ -119,10 +124,11 @@ class PageViewController: UIViewController {
         
         view.addSubview(pageController)
         view.bringSubview(toFront: pageController)
+        
+        pageController.isHidden = hidePageController
     }
     
     @objc private func scrollToNextController() {
-
         var index = pageController.currentPage
         let num = numberOfPage
         
@@ -161,14 +167,12 @@ class PageViewController: UIViewController {
             return nil
         }
         
-        let contentViewControllr = PageContentViewController() // TODO: replace init
+        let contentViewControllr = PageContentViewController()
         contentViewControllr.delegate = self
         
         contentViewControllr.pageIndex = index
         contentViewControllr.imageFile = imagesName[index]
         contentViewControllr.pageTitle = pagesTitle[index]
-        
-        // TODO: set data someday
         
         return contentViewControllr
     }
@@ -178,10 +182,9 @@ class PageViewController: UIViewController {
 extension PageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
+
         if let vc = viewController as? PageContentViewController {
             var index = vc.pageIndex
-            
             if index == NSNotFound { return nil }
             
             if allowedRecursive {
@@ -205,14 +208,11 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
+
         if let vc = viewController as? PageContentViewController {
             var index = vc.pageIndex
-            
             if index == NSNotFound { return nil }
             
-            
-            // TODO: replce
             if (self.allowedRecursive) {
                 if index >= self.numberOfPage - 1 {
                     index = 0
@@ -222,7 +222,6 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
                 return contentViewController(at: index)
             } else {
                 if index >= self.numberOfPage - 1 {
-                    // MARK: TO-DO [Add action, if you want]
                     return nil
                 } else {
                     index += 1
@@ -230,22 +229,23 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
                 
                 return contentViewController(at: index)
             }
-
         }
         
         return nil
     }
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        
         let firstPageContentViewController = pendingViewControllers.first as? PageContentViewController
-        
         if firstPageContentViewController != nil {
             let index = firstPageContentViewController!.pageIndex
+            
             pageController.currentPage = index
         }
         
     }
+    
 }
+
+// MARK: - page content delegate
 
 extension PageViewController: PageContentViewControllerDelegate {
     func pageContentViewController(_ controller: PageContentViewController, didSelectedAt page: Int) {
