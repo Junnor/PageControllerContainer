@@ -22,10 +22,7 @@ class ViewController: UIViewController {
         containerController.pagesTitle = ["Page 0", "Page 1", "Page 2"]
         
         containerController.delegate = self
-        
-        containerController.useTimerAnimation = true
-        containerController.hidePageController = true
-        
+                
         addChildViewController(containerController)
         var frame = UIScreen.main.bounds
         frame.origin.y = 64
